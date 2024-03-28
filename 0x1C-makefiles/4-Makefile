@@ -1,34 +1,21 @@
 # Makefile
 
-# Compiler
-CC := gcc
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:.c=.o)
+NAME = school
+RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
-CFLAGS := -Wall -Werror -Wextra -pedantic
-
-RM := rm -f
-
-SRC := $(wildcard *.c)
-
-OBJ := $(SRC:.c=.o)
-
-NAME := school
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-	-$(RM) *~ *# $(NAME)
+	$(RM) *~ $(NAME)
 
 oclean:
-	-$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
 re: fclean all
-
-.PHONY: all clean oclean fclean re

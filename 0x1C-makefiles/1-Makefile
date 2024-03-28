@@ -1,18 +1,6 @@
 # Makefile
 
-# Compiler
-
-CC := gcc
-
-SRC := $(wildcard *.c)
-
-EXECUTABLE := school
-
-all: $(EXECUTABLE)
-
-$(EXECUTABLE): $(SRC)
-	$(CC) -o $(EXECUTABLE) $(SRC)
-clean:
-	rm -f $(EXECUTABLE)
-
-.PHONY: all clean
+CC = gcc
+SRC = main.c school.c
+all: $(SRC)
+	$(CC) $(SRC) -o school
