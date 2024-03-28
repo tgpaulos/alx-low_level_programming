@@ -1,0 +1,33 @@
+# Makefile
+
+# Compiler
+CC := gcc
+
+# Compiler flags
+
+CFLAGS := -Wall -Werror -Wextra -pedantic
+
+SRC := $(wildcard *.c)
+
+OBJ := $(SRC:.c=.o)
+
+NAME := school
+
+all: $(NAME)
+
+$(NAME): $(SRC) m.h
+	$(CC) $(CFLAGS) -o $(NAME) $(SRC)
+
+clean:
+	@find . -type f \( -name '*~' -o -name '*#' \) -delete
+	@rm -f $(NAME)
+
+oclean:
+	@rm -f $(OBJ)
+
+fclean: clean oclean
+
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re

@@ -1,0 +1,12 @@
+# Makefile
+
+EXECUTABLE := school
+all: $(EXECUTABLE)
+
+$(EXECUTABLE):
+	gcc -o $(EXECUTABLE) main.c
+
+clean:
+	rm -f $(EXECUTABLE)
+
+.PHONY: all clean
